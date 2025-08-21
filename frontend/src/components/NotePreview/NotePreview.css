@@ -1,0 +1,109 @@
+.notes-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.note-preview {
+  position: relative;
+  background: #fff;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  overflow: hidden;
+  min-height: 120px;
+}
+
+.note-preview:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.note-preview::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.4;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+.note-preview.urgent::before {
+  background: rgba(var(--color-urgent), 1);
+}
+
+.note-preview.normal::before {
+  background: rgba(var(--color-normal), 0.5);
+}
+
+.note-preview.recurring::before {
+  background: rgba(var(--color-recurring), 0.5);
+}
+
+.note-preview h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #222;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.note-preview p {
+  flex: 1;
+  font-size: 0.9rem;
+  color: #555;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.note-type {
+  width: fit-content;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  margin-top: 0.5rem;
+  padding: 0 0.5rem;
+  border-radius: 12px;
+}
+
+.note-type div {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 2px solid gray;
+}
+
+.urgent .note-type div {
+  background: rgb(var(--color-urgent));
+}
+.normal .note-type div {
+  background: rgb(var(--color-normal));
+}
+.recurring .note-type div {
+  background: rgb(var(--color-recurring));
+}
+
+.urgent .note-type {
+  background-color: rgba(var(--color-urgent), 0.3);
+}
+
+.normal .note-type {
+  background-color: rgba(var(--color-normal), 0.3);
+}
+.recurring .note-type {
+  background-color: rgba(var(--color-recurring), 0.3);
+}
