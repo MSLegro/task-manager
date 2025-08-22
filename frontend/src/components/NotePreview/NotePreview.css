@@ -47,6 +47,7 @@
 }
 
 .note-preview h3 {
+  margin-top: 0.3rem;
   font-size: 1.1rem;
   margin-bottom: 0.5rem;
   font-weight: 600;
@@ -78,6 +79,10 @@
   margin-top: 0.5rem;
   padding: 0 0.5rem;
   border-radius: 12px;
+
+  p {
+    padding-bottom: 2px;
+  }
 }
 
 .note-type div {
@@ -87,23 +92,60 @@
   border: 2px solid gray;
 }
 
-.urgent .note-type div {
-  background: rgb(var(--color-urgent));
+.urgent {
+  --note-color: var(--color-urgent);
 }
-.normal .note-type div {
-  background: rgb(var(--color-normal));
+.normal {
+  --note-color: var(--color-normal);
 }
-.recurring .note-type div {
-  background: rgb(var(--color-recurring));
-}
-
-.urgent .note-type {
-  background-color: rgba(var(--color-urgent), 0.3);
+.recurring {
+  --note-color: var(--color-recurring);
 }
 
-.normal .note-type {
-  background-color: rgba(var(--color-normal), 0.3);
+.note-type div {
+  background: rgb(var(--note-color));
 }
-.recurring .note-type {
-  background-color: rgba(var(--color-recurring), 0.3);
+
+.note-type {
+  background-color: rgba(var(--note-color), 0.3);
+}
+
+.note-menu {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+
+.menu-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.menu-options {
+  display: none;
+  position: absolute;
+  right: 0;
+  margin-top: 4px;
+  list-style: none;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  padding: 0.25rem 0;
+  z-index: 10;
+}
+
+.menu-options li {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.menu-options li:hover {
+  background: #f3f3f3;
+}
+
+.note-menu:hover .menu-options {
+  display: block;
 }

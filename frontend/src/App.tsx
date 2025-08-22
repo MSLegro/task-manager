@@ -4,6 +4,7 @@ import Header from "./features/notes/components/Header/Header";
 import { NewNote } from "./components/NewNote/NewNote";
 import type { Note } from "./features/notes/types";
 import { getNotes } from "./features/notes/services/getNotes";
+import { deleteNote } from "./features/notes/services/deleteNote";
 
 export default function App() {
   const [notes, setNotes] = useState([] as Note[]);
@@ -29,8 +30,23 @@ export default function App() {
     }
   }
 
-  function toggleNewNote(mode: string = "create", note?: Note) {
-    mode !== "edit" && setShowNewNote((prev) => !prev);
+  async function toggleNewNote(mode: string = "create", note?: Note) {
+    switch (mode) {
+      case "delete":
+        const response = await deleteNote(note!.id);
+        if (response === "Note deleted successfully") {
+          setNotes((prevNotes) => prevNotes.filter((n) => n.id !== note!.id));
+        }
+        break;
+      case "edit":
+        setShowNewNote(true);
+        break;
+
+      default:
+        setShowNewNote((prev) => !prev);
+        break;
+    }
+
     setSelectedNote(note);
     setMode(mode);
   }
