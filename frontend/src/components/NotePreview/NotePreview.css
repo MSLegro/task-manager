@@ -1,23 +1,24 @@
 .notes-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 1rem;
-  padding: 1rem;
+  gap: 1em;
+  padding: 1em;
 }
 
 .note-preview {
   position: relative;
   background: #fff;
   border-radius: 12px;
-  padding: 1rem;
+  padding: 1em;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  gap: 3px;
   cursor: pointer;
   transition: transform 0.15s ease, box-shadow 0.15s ease;
   overflow: hidden;
-  min-height: 120px;
+  min-height: 140px;
 }
 
 .note-preview:hover {
@@ -47,9 +48,10 @@
 }
 
 .note-preview h3 {
-  margin-top: 0.3rem;
-  font-size: 1.1rem;
-  margin-bottom: 0.5rem;
+  padding-right: 0.45em;
+  margin-top: 0.3em;
+  font-size: 1.1em;
+  margin-bottom: 0.5em;
   font-weight: 600;
   color: #222;
   overflow: hidden;
@@ -59,55 +61,15 @@
 
 .note-preview p {
   flex: 1;
+  margin: 0;
   font-size: 0.9rem;
   color: #555;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 3;
+  line-clamp: 3;
   -webkit-box-orient: vertical;
-}
-
-.note-type {
-  width: fit-content;
-  height: 25px;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.75rem;
-  font-weight: 500;
-  margin-top: 0.5rem;
-  padding: 0 0.5rem;
-  border-radius: 12px;
-
-  p {
-    padding-bottom: 2px;
-  }
-}
-
-.note-type div {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  border: 2px solid gray;
-}
-
-.urgent {
-  --note-color: var(--color-urgent);
-}
-.normal {
-  --note-color: var(--color-normal);
-}
-.recurring {
-  --note-color: var(--color-recurring);
-}
-
-.note-type div {
-  background: rgb(var(--note-color));
-}
-
-.note-type {
-  background-color: rgba(var(--note-color), 0.3);
 }
 
 .note-menu {
@@ -124,7 +86,6 @@
 }
 
 .menu-options {
-  display: none;
   position: absolute;
   right: 0;
   margin-top: 4px;
@@ -133,19 +94,21 @@
   border: 1px solid #ddd;
   border-radius: 6px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  padding: 0.25rem 0;
+  padding: 0;
   z-index: 10;
+
+  ul {
+    border-radius: 6px;
+  }
 }
 
 .menu-options li {
-  padding: 0.5rem 1rem;
+  color: var(--color-primary);
+  padding: 0.5em 1em;
   cursor: pointer;
+  border-bottom: 1px solid #eee;
 }
 
 .menu-options li:hover {
   background: #f3f3f3;
-}
-
-.note-menu:hover .menu-options {
-  display: block;
 }

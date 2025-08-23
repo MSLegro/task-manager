@@ -9,11 +9,11 @@ export function ChkeckIcon(props: React.SVGProps<SVGSVGElement>) {
     >
       <path
         fill="none"
-        fill-rule="evenodd"
+        fillRule="evenodd"
         stroke="#000"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
         d="M17 1 6 12 1 7"
       ></path>
     </svg>

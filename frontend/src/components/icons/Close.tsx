@@ -9,11 +9,11 @@ export function CloseIcon(props: React.SVGProps<SVGSVGElement>) {
     >
       <g
         fill="none"
-        fill-rule="evenodd"
+        fillRule="evenodd"
         stroke="#000"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
       >
         <path d="M13 1 1 13M1 1l12 12"></path>
       </g>

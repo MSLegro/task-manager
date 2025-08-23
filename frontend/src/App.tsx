@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Dashboard from "./features/notes/components/Dashboard/Dashboard";
 import Header from "./features/notes/components/Header/Header";
 import { NewNote } from "./components/NewNote/NewNote";
-import type { Note } from "./features/notes/types";
+import { priorityOrder, type Note } from "./features/notes/types";
 import { getNotes } from "./features/notes/services/getNotes";
 import { deleteNote } from "./features/notes/services/deleteNote";
 
@@ -15,14 +15,20 @@ export default function App() {
   useEffect(() => {
     async function fetchNotes() {
       const notes = await getNotes();
-      setNotes(notes);
+      setNotes(
+        notes.sort((a, b) => {
+          const order = priorityOrder[a.type] - priorityOrder[b.type];
+          if (order !== 0) return order;
+          return a.title.localeCompare(b.title);
+        })
+      );
     }
     fetchNotes();
   }, []);
 
   function handleNewNote(note: Note) {
     if (mode === "create") {
-      setNotes((prevNotes) => [...prevNotes, note]);
+      setNotes((prevNotes) => [note, ...prevNotes]);
     } else {
       setNotes((prevNotes) =>
         prevNotes.map((n) => (n.id === note.id ? note : n))

@@ -5,3 +5,9 @@ export interface Note {
   type: "urgent" | "normal" | "recurring";
   completed: boolean;
 }
+
+export const priorityOrder = {
+  urgent: 1,
+  normal: 2,
+  recurring: 3,
+};
