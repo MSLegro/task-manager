@@ -27,6 +27,7 @@ export function NewNote({
       description: "",
       type: "normal",
       completed: false,
+      date: new Date().toISOString(),
     }
   );
   const formIcon =

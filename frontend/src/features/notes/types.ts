@@ -3,6 +3,7 @@ export interface Note {
   title: string;
   description: string;
   type: "urgent" | "normal" | "recurring";
+  date: string;
   completed: boolean;
 }
 
